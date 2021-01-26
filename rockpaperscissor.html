@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rock Paper Scissors!</title>
+<meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    // Your JavaScript goes here!
+    let playerScore = 0;
+    let computerScore = 0;
+
+        function promptPlay(){
+            playerSelection = prompt("Please choose either rock, paper, or scissors").toLowerCase();
+            return playerSelection;
+        }
+
+        function computerPlay(){
+            let values = ["rock", "paper", "scissors"];
+                handValues = values[Math.floor(Math.random() * values.length)];
+                return handValues;
+        }
+
+        function gameRound(playerSelection, computerSelection){
+            if(playerSelection == computerSelection)
+            {
+                return ("Itsa tie");
+            }
+                if(playerSelection == "rock")
+                {
+                    if(computerSelection == "paper") {
+                        computerScore++;
+                        return ("You lose, paper beats rock");
+                    }
+                    else if(computerSelection == "scissors"){
+                        playerScore++;
+                        return ("You win, rock beats scissors");
+                    }
+                }
+
+                if(playerSelection == "scissors")
+                {
+                    if(computerSelection == "paper"){
+                        playerScore++;
+                        return ("You win, scissors beats paper");
+                    }
+                    else if(computerSelection == "rock"){
+                        computerScore++;
+                        return ("You lose, rock beats scissors");
+                    }
+                }
+
+                if (playerSelection == "paper")
+                {   
+                    if (computerSelection == "rock"){
+                        playerScore++;
+                        return ("You win, paper beats rock");
+                    }
+                    else if(computerSelection == "scissors") {
+                        computerScore++;
+                        return ("You lose, scissors beats paper");
+                    }
+                }
+        }
+
+        function game(){
+
+            for (let i = 1; i<=5; i++){
+                let playerSelection = promptPlay();
+                let computerSelection = computerPlay();
+
+                console.log(`[Play turn ${i}] Player: ${playerSelection} | Computer: ${computerSelection}`);
+                console.log(gameRound(playerSelection, computerSelection));
+            }
+            console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
+        }
+        game();
+  </script>
+</body>
+</html>
